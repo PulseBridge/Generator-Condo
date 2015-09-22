@@ -1,0 +1,14 @@
+sudo: false
+language: node_js
+node_js:
+- '0.10'
+before_install: npm install -g npm@'>=2.13.5'
+deploy:
+  provider: npm
+  email: open@pulsebridge.com
+  api_key:
+    secure: CwqcQoy4aIXqh0kjo3oqHZwI8gXaP4k0EoAAa3E5NcICbSdt6OUIMZs+FZri47gjq6tH2m5rzER5AmK35v81APy/2JWj45u/YkVUKXtu5xf4AHJZvvNRVYDTUxvLTkVemqLK3csCXPQa0W+UAmxpXlAR2PAtqFnkvigeMpdWDZiZZXeyN2eKGeAJU5I79wRXZMHgXnOmYNbSk07B36Hff9p5/G7AmfWN+HlcLv/GHxq+O8Gw28EE0Boa/NaAIbIDwLC3k7SSUa3A6FSMId7mpuiK+ZJ51Vyu56g3CuiB2A1zJq6/3fjrLUzRv0fPNePRayRebz04qURkJzokSjG7y187yz9D5zYfinxkDPJUs0MB7PD7nVSJCI4/zu+6uhNLq2qMzZGOjPWb+hkmrltnz93ONp/u4sE2yKaA9ca1IXx4RYd1XoGgrUPDdwDc7eGyPpOL8LTtMQoW8RzPky1GV558YFZ8Z2S3B0zFMnM6xsBWMQ932VZSRHSXrvFpg6icw/uzYnIOhpMdyvM9oSeXxdxHRcfo4BkDdRz+3qslhbtVfVg0KEGSMNlnuzlse655Gx43hRpsGYikB0FwEC1G6CGWlpHwoAlpPHRI20WIJ3Yn+jgsHfthqjfZs7IbaYspbLVj8xf97eThnS5t4/82pZL8X4y8/zoRJiiSf8L4Fco=
+  on:
+    tags: true
+    repo: PulseBridge/Generator-Condo
+    branch: master

@@ -1,0 +1,10 @@
+{
+    "projects": [
+        "<%= src %>",
+        "<%= test %>"
+    ],
+    
+    "sdk": {
+        "runtime" : "<%= runtime %>"
+    }
+}
