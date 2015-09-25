@@ -24,7 +24,7 @@ if ! type dnvm > /dev/null 2>&1; then
     if ! test -f "$dnvmsh"; then
         # attempt to download it from curl
         result=$(curl -L -D - "$dnvmuri" -o "$dnvmsh" -# | grep "^HTTP/1.1" | head -n 1 | sed "s/HTTP.1.1 \([0-9]*\).*/\1/")
-       
+
         # source it if it was successfully retrieved
         [[ $result == "200" ]] && chmod ugo+x "$dnvmsh"
     fi
@@ -45,7 +45,7 @@ nugetcmd=$nugetpath/nuget.exe
 # determine if the nuget directory exists
 if ! test -f "$nugetpath"; then
     # make the nuget directory
-    mkdir -p "$nugetpath"    
+    mkdir -p "$nugetpath"
 fi
 
 # download nuget if it doesn't already exist
@@ -60,7 +60,7 @@ nuget=$root/.nuget/nuget.exe
 # determine if the .nuget directory exists
 if ! test -f "$nugetpath"; then
     # make the nuget directory
-    mkdir -p "$nugetpath"    
+    mkdir -p "$nugetpath"
 fi
 
 # determine if the nuget exe exists
@@ -73,7 +73,7 @@ fi
 dnvm upgrade -r coreclr
 
 # set sake and make file paths
-sources="https://www.myget.org/F/pulsebridge/api/v2;https://www.nuget.org/api/v2"
+sources="https://www.nuget.org/api/v2"
 sake=$root/packages/Sake/tools/Sake.exe
 includes=$root/packages/PulseBridge.Condo/build/sake
 make=make.shade
