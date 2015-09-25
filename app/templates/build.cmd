@@ -6,7 +6,7 @@ SETLOCAL
     SET DNVMPATH=%DNXPATH%\dnvm
     SET DNVMCMD=%DNVMPATH%\dnvm.cmd
     SET DNVMPS1=%DNVMPATH%\dnvm.ps1
-    
+
     SET DNVMCMDURI="https://raw.githubusercontent.com/aspnet/Home/dev/dnvm.cmd"
     SET DNVMPS1URI="https://raw.githubusercontent.com/aspnet/Home/dev/dnvm.ps1"
 
@@ -38,7 +38,7 @@ SETLOCAL
     IF NOT EXIST "%NUGETPATH%" (
         mkdir "%NUGETPATH%"
     )
-    
+
     IF NOT EXIST "%NUGETCMD%" (
         @powershell -NoProfile -ExecutionPolicy Unrestricted -Command "$ProgressPreference = 'SilentlyContinue'; Invoke-WebRequest '%NUGETURI%' -OutFile '%NUGETCMD%'"
     )
@@ -54,7 +54,7 @@ SETLOCAL
         copy "%NUGETCMD%" "%NUGET%"
     )
 
-    SET SOURCES="https://www.myget.org/F/pulsebridge/api/v2;https://www.nuget.org/api/v2"
+    SET SOURCES="https://www.nuget.org/api/v2"
     SET SAKE=packages\Sake\tools\Sake.exe
     SET INCLUDES=packages\PulseBridge.Condo\build\sake
     SET MAKE=make.shade
@@ -62,7 +62,7 @@ SETLOCAL
     IF NOT EXIST "%SAKE%" (
         "%NUGET%" install Sake -pre -o packages -ExcludeVersion
     )
-    
+
     IF NOT EXIST "%INCLUDES%" (
         "%NUGET%" install PulseBridge.Condo -pre -o packages -ExcludeVersion -Source %SOURCES% -NonInteractive
     )
