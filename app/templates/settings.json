@@ -3,5 +3,5 @@
     "editor.insertSpaces": true,
 
     "files.encoding": "utf8",
-    "files.trimTrailingWhitespace": false
+    "files.trimTrailingWhitespace": true
 }

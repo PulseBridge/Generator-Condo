@@ -1,4 +1,4 @@
-# generator-condo [![Build Status](https://img.shields.io/travis/PulseBridge/Generator-Condo.svg)](https://travis-ci.org/PulseBridge/Generator-Condo)
+# generator-condo [![Build Status](https://img.shields.io/travis/PulseBridge/Generator-Condo.svg)](https://travis-ci.org/PulseBridge/Generator-Condo) [![NPM Version](https://img.shields.io/npm/v/generator-condo.svg)](https://www.npmjs.org/package/generator-condo)
 
 > A Yeoman Generator for [Condo](http://open.pulsebridge.com/condo)
 
@@ -16,7 +16,7 @@ necessary to make a DNX project function correctly, including, but not limited t
 * Executing unit tests
 * Packing NuGet packages
 * Pushing (Publishing) NuGet packages
-	
+
 These are just some of the most-used features of the build system. For more information, please refer to the [official documentation](http://open.pulsebridge.com/condo).
 
 ### What is Yeoman?
