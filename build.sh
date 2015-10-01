@@ -12,6 +12,29 @@ dnvmpath=$dnxpath/dnvm
 dnvmsh=$dnvmpath/dnvm.sh
 dnvmuri="https://raw.githubusercontent.com/aspnet/Home/dev/dnvm.sh"
 
+# determine if mono is installed on the system
+if ! type mono > /dev/null 2>&1; then
+    # write a message to the user letting them know that mono should be installed
+    echo
+    echo 'Mono is currently a prerequisite in order to use Condo due to the dependency on Sake (https://github.com/sakeproject/sake), which is not supported within the Core CLR currently.'
+    echo
+
+    # get the name of the kernel
+    uname=$(uname)
+
+    # determine if the kernel is OS X
+    if [[ $uname == "Darwin" ]]; then
+        echo 'The recommended way to install Mono on OS X is to use Homebrew. Install Homebrew from: http://brew.sh then execute the following command to install mono.'
+        echo
+        echo 'brew install mono'
+    else
+        echo 'The recommended way to install Mono on Linux distributions is to follow the instructions available at: http://www.mono-project.com/download/'
+    fi
+
+    # exit with an error code
+    exit 1
+fi
+
 # determine if dnx path exists
 if ! test -f "$dnvmpath"; then
     # make the dnx directory
@@ -37,7 +60,7 @@ if ! type dnvm > /dev/null 2>&1; then
 fi
 
 # set the URL to nuget
-nugeturi=http://www.nuget.org/nuget.exe
+nugeturi=https://dist.nuget.org/win-x86-commandline/latest/nuget.exe
 appdata=~/.config
 nugetpath=$appdata/NuGet
 nugetcmd=$nugetpath/nuget.exe
