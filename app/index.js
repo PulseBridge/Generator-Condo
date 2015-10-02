@@ -84,6 +84,16 @@ module.exports = yeoman.generators.Base.extend({
       
       mkdir(this.destinationPath(this.props.src));
       mkdir(this.destinationPath(this.props.test));
+
+      this.fs.copy(
+        this.templatePath('yo-rc.json'),
+        this.destinationPath(this.props.src + '/.yo-rc.json')
+      );
+
+      this.fs.copy(
+        this.templatePath('yo-rc.json'),
+        this.destinationPath(this.props.test + '/.yo-rc.json')
+      );
     },
 
     projectfiles: function () {
