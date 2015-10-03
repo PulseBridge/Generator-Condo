@@ -1,6 +1,15 @@
-# generator-condo [![Build Status](https://img.shields.io/travis/PulseBridge/Generator-Condo.svg)](https://travis-ci.org/PulseBridge/Generator-Condo) [![NPM Version](https://img.shields.io/npm/v/generator-condo.svg)](https://www.npmjs.org/package/generator-condo)
+# generator-condo
 
-> A Yeoman Generator for [Condo](http://open.pulsebridge.com/condo)
+> A Yeoman Generator for [Condo][condo-url]
+
+## Vitals
+
+Info          | Badges
+--------------|--------------
+Version       | [![Version][npm-v-image]][npm-url]
+License       | [![License][license-image]][license]
+Downloads     | [![NPM Downloads][npm-d-image]][npm-url]
+Build Status  | [![Travis Build Status][travis-image]][travis-url]
 
 ## Getting Started
 
@@ -17,44 +26,144 @@ necessary to make a DNX project function correctly, including, but not limited t
 * Packing NuGet packages
 * Pushing (Publishing) NuGet packages
 
-These are just some of the most-used features of the build system. For more information, please refer to the [official documentation](http://open.pulsebridge.com/condo).
+These are just some of the most-used features of the build system. For more information, please refer to the [official documentation][condo-url].
 
-### What is Yeoman?
+### Using Condo
 
-Trick question. It's not a thing. It's this guy:
+1. Make sure that you have [Yeoman][yo-url] installed:
 
-![](http://i.imgur.com/JHaAlBJ.png)
+	```bash
+	npm install -g yo
+	```
 
-Basically, he wears a top hat, lives in your computer, and waits for you to tell him what kind of application you wish to create.
+2. Install the Condo generator:
 
-Not every new computer comes with a Yeoman pre-installed. He lives in the [npm](https://npmjs.org) package repository. You only have to ask for him once, then he packs up and moves into your hard drive. *Make sure you clean up, he likes new and shiny things.*
+	```bash
+	npm install -g generator-condo
+	```
+
+3. Initiate the generator:
+
+	```bash
+	yo condo
+	```
+
+4. Run the build:
+
+	OS X / Linux:
+
+	```bash
+	./build.sh
+	```
+
+	Windows (CLI):
+
+	```cmd
+	build
+	```
+
+	Windows (PoSH):
+	```posh
+	./build.ps1
+	```
+
+### Options
+
+The generator allows you to specify several options, which results in a customized experience.
+
+#### Source Folder Name
+
+The name of the folder where you intend to add one or more projects to your "solution".
+
+`Default Value: (src)`
+
+This value is used to set the `projects` property in the resulting `global.json` file.
+
+#### Test Folder Name
+
+The name of the folder where you intend to add one or more test projects to your "solution".
+
+`Default Value: (test)`
+
+This value is used to set the `projects` property in the resulting `global.json` file.
+
+#### Project Name
+
+The name of your project.
+
+`Default Value: name of the folder in which the generator was executed`
+
+This value is set in the resulting `make.shade` file, which is subsequently used to set the project name in assemblies built by condo.
+It is also used as the name of the solution and ReSharper settings files (if included).
+
+#### Simple Version
+
+`Default Value: 1.0.0`
+
+This value is set in the resulting `make.shade` file, which is subsequently used to generate and set the semantic version in assemblies built by condo.
+
+#### Company Name
+
+`Default Value: My Company`
+
+This value is set in the resulting `make.shade` file, which is subseqently used to generate and set the company name in assemblies built by condo.
+It is also used to set the name of the company in the file header template within the ReSharper settings file (if included).
+
+#### Runtime
+
+`Default Value: CoreCLR`
+
+This value is used to set the `sdk` property in the resulting `global.json` file.
+
+#### Inclusions
+
+All of the inclusions identified below are enabled by default to make it as easy as possible to get started with a new project. That being said,
+we are fully aware that most of these inclusions are highly subjective. For the control freaks among us (ourselves included), you can inverse this
+situation (all includes off by default) when you execute the condo generator:
 
 ```bash
-npm install -g yo
+yo condo --includes false
 ```
 
-### Yeoman Generators
+* **Solution File**: A solution file (sln) used to open the project in Visual Studio on Windows.
+* **ReSharper Settings**: Settings file (sln.DotSettings) used to configure ReSharper on Windows with some basic recommendations.
+* **Editor Configuration**: A configuration file (.editorconfig) used to configure plain-text editors that support the standard.
+* **Visual Studio Code Settings**: A settings file (.vscode/settings.json) used to configure Visual Studio Code.
+* **Git Ignore**: An ignore file (.gitignore) used to ignore artifacts created by condo in addition to many other build-time artifacts.
+	- This is based on the [gitignore project][gitignore-url].
+* **Git Attributes**: An attributes file (.gitattributes) used to configure cross-platform management of file types within a git repository.
+* **JSHint**: A hint file (.jshintrc) used to configure JSHint and auto-completion toolsets in various editors.
 
-Yeoman travels light. He didn't pack any generators when he moved in. You can think of a generator like a plug-in. You get to choose what type of application you wish to create, such as a Backbone application or even a Chrome extension.
+### CLI Options
 
-To install generator-condo from npm, run:
+* _--includes_ : A value indicating whether or not to enable includes.
 
-```bash
-npm install -g generator-condo
-```
+## Questions or Comments?
 
-Finally, initiate the generator:
+For questions or comments related to the _generator_, please open an issue on the [condo-generator][gh-gen-url] repository on GitHub.
 
-```bash
-yo condo
-```
+For questions or comments related to _condo_ itself, please open an issue on the [condo][gh-condo-url] repository on GitHub.
 
-### Getting To Know Yeoman
+## Copyright and License
 
-Yeoman has a heart of gold. He's a person with feelings and opinions, but he's very easy to work with. If you think he's too opinionated, he can be easily convinced.
+©. PulseBridge, Inc. and contributors. Distributed under the [APACHE 2.0][license-url] license. See [LICENSE][] and [CREDITS][] for details.
 
-If you'd like to get to know Yeoman better and meet some of his friends, [Grunt](http://gruntjs.com) and [Bower](http://bower.io), check out the complete [Getting Started Guide](https://github.com/yeoman/yeoman/wiki/Getting-Started).
+[license-image]: https://img.shields.io/npm/l/generator-condo.svg
+[license]: LICENSE
+[credits]: CREDITS
 
-## License
+[npm-url]: //www.npmjs.com/package/generator-condo
+[npm-v-image]: https://img.shields.io/npm/v/generator-condo.svg
+[npm-d-image]: https://img.shields.io/npm/dm/generator-condo.svg
 
-[Apache 2.0](http://www.apache.org/licenses/LICENSE-2.0)
+[travis-image]: https://img.shields.io/travis/pulsebridge/generator-condo/develop.svg
+[travis-url]: //travis-ci.org/pulsebridge/condo
+
+[condo-url]: http://open.pulsebridge.com/condo
+[license-url]: http://www.apache.org/licenses/LICENSE-2.0
+[yo-url]: //github.com/yeoman/yo
+[yo-start-url]: //github.com/yeoman/yeoman/wiki/Getting-Started
+[gitignore-url]: //github.com/github/gitignore
+
+[gh-gen-url]: //github.com/pulsebridge/generator-condo
+[gh-condo-url]: //github.com/pulsebridge/condo
