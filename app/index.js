@@ -54,7 +54,7 @@ module.exports = yeoman.generators.Base.extend({
       type: 'input',
       name: 'company',
       message: 'Company name',
-      default: 'PulseBridge, Inc'
+      default: 'My Company'
     }, {
       type: 'list',
       name: 'runtime',
@@ -155,6 +155,11 @@ module.exports = yeoman.generators.Base.extend({
     },
 
     projectfiles: function () {
+      if (this.props.includes === undefined)
+      {
+        return;
+      }
+
       if (this.props.includes.indexOf('solution') > -1) {
         var sln = 'solution.sln';
 
@@ -203,7 +208,7 @@ module.exports = yeoman.generators.Base.extend({
         );
       }
 
-      if (this.props.includes.indexOf('jsint') > -1) {
+      if (this.props.includes.indexOf('jshint') > -1) {
         this.fs.copy(
           this.templatePath('jshintrc'),
           this.destinationPath('.jshintrc')
