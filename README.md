@@ -2,6 +2,8 @@
 
 > A Yeoman Generator for [Condo][condo-url]
 
+[![][screen-image]][npm-url]
+
 ## Vitals
 
 Info          | Badges
@@ -167,3 +169,5 @@ For questions or comments related to _condo_ itself, please open an issue on the
 
 [gh-gen-url]: //github.com/pulsebridge/generator-condo
 [gh-condo-url]: //github.com/pulsebridge/condo
+
+[screen-image]: https://cloud.githubusercontent.com/assets/1803684/10266071/b6d6f8e6-6a00-11e5-9386-c9da0281f5dd.gif
