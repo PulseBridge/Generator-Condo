@@ -96,7 +96,6 @@ fi
 dnvm upgrade -r coreclr
 
 # set sake and make file paths
-sources="https://www.nuget.org/api/v2"
 sake=$root/packages/Sake/tools/Sake.exe
 includes=$root/packages/PulseBridge.Condo/build/sake
 make=make.shade
@@ -109,9 +108,7 @@ fi
 
 # determine if the condo build includes exist
 if ! test -f "$includes"; then
-    mono "$nuget" install PulseBridge.Condo -pre -o packages -ExcludeVersion -Source $sources -NonInteractive
-else
-    mono "$nuget" update PulseBridge.Condo -RepositoryPath packages -pre -Source $sources -NonInteractive
+    mono "$nuget" install PulseBridge.Condo -pre -o packages -ExcludeVersion -NonInteractive
 fi
 
 # execute the build with sake

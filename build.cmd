@@ -33,7 +33,7 @@ SETLOCAL
     )
 
     SET NUGETCMD=%NUGETPATH%\nuget.exe
-    SET NUGETURI="https://www.nuget.org/nuget.exe"
+    SET NUGETURI="https://dist.nuget.org/win-x86-commandline/latest/nuget.exe"
 
     IF NOT EXIST "%NUGETPATH%" (
         mkdir "%NUGETPATH%"
@@ -54,7 +54,6 @@ SETLOCAL
         copy "%NUGETCMD%" "%NUGET%"
     )
 
-    SET SOURCES="https://www.nuget.org/api/v2"
     SET SAKE=packages\Sake\tools\Sake.exe
     SET INCLUDES=packages\PulseBridge.Condo\build\sake
     SET MAKE=make.shade
@@ -64,10 +63,7 @@ SETLOCAL
     )
 
     IF NOT EXIST "%INCLUDES%" (
-        "%NUGET%" install PulseBridge.Condo -pre -o packages -ExcludeVersion -Source %SOURCES% -NonInteractive
-    )
-    ELSE (
-        "%NUGET%" update PulseBridge.Condo -RepositoryPath packages -pre -Source %SOURCES% -NonInteractive
+        "%NUGET%" install PulseBridge.Condo -pre -o packages -ExcludeVersion -NonInteractive
     )
 
     "%SAKE%" -I "%INCLUDES%" -f "%MAKE%" %*
