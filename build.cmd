@@ -54,17 +54,23 @@ SETLOCAL
         copy "%NUGETCMD%" "%NUGET%"
     )
 
-    SET SAKE=packages\Sake\tools\Sake.exe
-    SET INCLUDES=packages\PulseBridge.Condo\build\sake
+    SET SAKEPKG=packages\Sake
+    SET SAKE=%SAKEPKG%\tools\Sake.exe
+    SET CONDOPKG=packages\PulseBridge.Condo
+    SET INCLUDES=%CONDOPKG%\build\sake
     SET MAKE=make.shade
 
-    IF NOT EXIST "%SAKE%" (
-        "%NUGET%" install Sake -pre -o packages -ExcludeVersion
+    IF EXIST "%SAKEPKG%" (
+	rd "%SAKEPKG%" /s /q
     )
 
-    IF NOT EXIST "%INCLUDES%" (
-        "%NUGET%" install PulseBridge.Condo -pre -o packages -ExcludeVersion -NonInteractive
+    IF EXIST "%CONDOPKG%" (
+        rd "%CONDOPKG%" /s /q
     )
+
+    "%NUGET%" install Sake -pre -o packages -ExcludeVersion
+
+    "%NUGET%" install PulseBridge.Condo -pre -o packages -ExcludeVersion -NonInteractive
 
     "%SAKE%" -I "%INCLUDES%" -f "%MAKE%" %*
 ENDLOCAL
