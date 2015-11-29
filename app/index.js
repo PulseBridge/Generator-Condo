@@ -6,6 +6,9 @@ var chalk = require('chalk');
 var mkdir = require('mkdirp');
 var path = require('path');
 var inquirer = require('inquirer');
+var q = require('q');
+
+var Download = require('download');
 
 module.exports = yeoman.generators.Base.extend({
   constructor: function() {
@@ -107,27 +110,57 @@ module.exports = yeoman.generators.Base.extend({
 
     this.prompt(prompts, function (props) {
       this.props = props;
+      this.log('');
       done();
     }.bind(this));
   },
 
   writing: {
-    app: function () {
-      this.fs.copy(
-        this.templatePath('build.cmd'),
-        this.destinationPath('build.cmd')
-      );
+    app: function () {            
+      var baseUri = 'https://raw.githubusercontent.com/pulsebridge/condo/develop/src/template/';
+      
+      var done = this.async();
+      var log = this.log;
 
-      this.fs.copy(
-        this.templatePath('build.ps1'),
-        this.destinationPath('build.ps1')
-      );
+      var unix = q.defer();
 
-      this.fs.copy(
-        this.templatePath('build.sh'),
-        this.destinationPath('build.sh')
-      );
+      new Download({ mode: '750' })
+        .get(baseUri + 'condo.sh')
+        .dest(this.destinationRoot())
+        .use(function(res, url) {
+          res.on('end', function() {
+            log(chalk.green('   fetch  ') + url.substr(url.lastIndexOf('/') + 1));
+          });
+        })
+        .run(function(err, files) {
+          if (err) {
+            unix.reject(err);
+            return;
+          } else {
+            unix.resolve(files);
+          }
+        });
 
+      var windows = q.defer();
+
+      new Download()
+        .get(baseUri + 'condo.cmd')
+        .get(baseUri + 'condo.ps1')
+        .dest(this.destinationRoot())
+        .use(function(res, url) {
+          res.on('end', function() {
+            log(chalk.green('   fetch  ') + url.substr(url.lastIndexOf('/') + 1));
+          });
+        })
+        .run(function(err, files) {
+          if (err) {
+            windows.reject(err);
+            return;
+          } else {
+            windows.resolve(files);
+          }
+        });
+      
       this.fs.copyTpl(
         this.templatePath('global.json'),
         this.destinationPath('global.json'),
@@ -152,6 +185,12 @@ module.exports = yeoman.generators.Base.extend({
         this.templatePath('yo-rc.json'),
         this.destinationPath(this.props.test + '/.yo-rc.json')
       );
+      
+      q.all(windows.promise, unix.promise).then(function() {
+        done();
+      }, function(err) {
+        done(err);
+      });
     },
 
     projectfiles: function () {
@@ -218,9 +257,11 @@ module.exports = yeoman.generators.Base.extend({
   },
 
   end: function() {
-    this.log('\r\n');
-    this.log('Your solution structure is now created. Use the following commands to get started.');
-    this.log(chalk.green('     ./build.sh verify'));
-    this.log('\r\n');
+    this.log('');
+    this.log('Your solution structure has now been created. Use one of the following commands to get started:');
+    this.log('');
+    this.log(chalk.green('   *nix   ') + './condo.sh');
+    this.log(chalk.green('   win    ') + 'condo');
+    this.log(chalk.green('   posh   ') + './condo.ps1');
   }
 });

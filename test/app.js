@@ -2,19 +2,22 @@
 
 var assert = require('yeoman-generator').assert;
 var test = require('./util');
+var os = require('os');
+var fs = require('fs');
 
 describe('condo:app', function () {
+  test.app();
+
   it('importable', function () {
     var app = require('../app');
     assert.notEqual(app, undefined);
   });
 
-  test.app();
-
-  test.created('build.cmd');
-  test.created('build.ps1');
-  test.created('build.sh');
-
+  test.created('condo.cmd');
+  test.created('condo.ps1');
+  test.created('condo.sh');
+  test.hasMode('condo.sh', 33256);
+  
   test.created('src/.yo-rc.json');
   test.created('test/.yo-rc.json');
 
@@ -44,7 +47,7 @@ describe('condo:app', function () {
   test.created('.jshintrc');
 });
 
-describe('condo:app:no-includes', function () {
+describe('condo:app:no-includes', function () {  
   var prompts = {
     "src": "bob-src",
     "test": "bob-test",
@@ -54,11 +57,19 @@ describe('condo:app:no-includes', function () {
     "runtime": "mono",
     "includes": [ ]
   };
+  
+  test.app(null, null, prompts);
 
-  test.created('build.cmd');
-  test.created('build.ps1');
-  test.created('build.sh');
-
+  it('importable', function () {
+    var app = require('../app');
+    assert.notEqual(app, undefined);
+  });
+  
+  test.created('condo.cmd');
+  test.created('condo.ps1');
+  test.created('condo.sh');
+  test.hasMode('condo.sh', 33256);
+  
   test.created('bob-src/.yo-rc.json');
   test.created('bob-test/.yo-rc.json');
 
@@ -86,7 +97,5 @@ describe('condo:app:no-includes', function () {
   test.notCreated('.gitignore');
 
   test.notCreated('.jshintrc');
-
-  test.app(null, null, prompts);
 
 });

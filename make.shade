@@ -1,12 +1,12 @@
-var product             = 'PulseBridge.Condo.Generator'
+var product             = 'generator-condo'
 var version             = '1.0.0'
 var company             = 'PulseBridge, Inc.'
 var copyright           = '©. PulseBridge, Inc. All rights reserved.'
 var license             = 'Apache License, Version 2.0'
 var licenseUri          = 'http://www.apache.org/licenses/LICENSE-2.0'
 
-default base_path       = '${ Directory.GetCurrentDirectory() }'
-default working_path    = '${ base_path }'
+var src_path            = 'src'
+var test_path           = 'test'
 
 use-condo-lifecycle
 use-condo-goals

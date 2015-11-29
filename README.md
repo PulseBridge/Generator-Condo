@@ -12,6 +12,7 @@ Version       | [![Version][npm-v-image]][npm-url]
 License       | [![License][license-image]][license]
 Downloads     | [![NPM Downloads][npm-d-image]][npm-url]
 Build Status  | [![Travis Build Status][travis-image]][travis-url]
+Chat          | [![Join Chat][gitter-image]][gitter-url]
 
 ## Getting Started
 
@@ -171,3 +172,6 @@ For questions or comments related to _condo_ itself, please open an issue on the
 [gh-condo-url]: //github.com/pulsebridge/condo
 
 [screen-image]: https://cloud.githubusercontent.com/assets/1803684/10266071/b6d6f8e6-6a00-11e5-9386-c9da0281f5dd.gif
+
+[gitter-url]: //gitter.im/pulsebridge/generator-condo
+[gitter-image]:https://img.shields.io/badge/⊪%20gitter-join%20chat%20→-1dce73.svg

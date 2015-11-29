@@ -1,0 +1,20 @@
+{
+	"version": "0.2.0",
+	"configurations": [
+		{
+			"name": "mocha",
+			"type": "node",
+			"request": "launch",
+			"program": "node_modules/mocha/bin/_mocha",
+			"stopOnEntry": false,
+			"args": [
+				"test/app.js"
+			],
+			"cwd": ".",
+			"runtimeExecutable": null,
+			"env": { 
+				"NODE_ENV": "production" 
+			}
+		}
+	]
+}
