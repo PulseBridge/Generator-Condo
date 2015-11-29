@@ -26,7 +26,8 @@ npm-debug.log
 .ntvs_analysis.dat
 
 # visual studio 2015 cache/options
-.vs/
+.vs/**
+.vscode/**
 [Pp]roject.lock.json
 [Cc]ondo.[Aa]ssembly[Ii]nfo.cs
 *.[Cc]ache
@@ -92,6 +93,9 @@ nuget.exe
 !.tfignore
 !.gitignore
 !.gitattributes
+
+# include launch.json
+!.vscode/launch.json
 
 # mac files
 .DS_Store

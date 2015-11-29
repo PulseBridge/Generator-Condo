@@ -1,10 +1,16 @@
 #! /bin/bash
 
+#get the current path
+path=$(pwd)
+
 # find the script path
 root=$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)
 
 # change to the root path
 cd $root
+
+# write a newline for separation
+echo
 
 # set the dnx directory
 dnxpath=~/.dnx
@@ -93,30 +99,42 @@ if ! test -f "$nuget"; then
 fi
 
 # upgrade dnx to latest
-dnvm upgrade -r coreclr
+dnvm install latest -r coreclr -alias default
+dnvm install latest -r mono -alias -default
 
 # set sake and make file paths
+feedsrc=$CONDO_NUGET_SOURCE
 sakepkg=$root/packages/Sake
 sake=$sakepkg/tools/Sake.exe
 
 condopkg=$root/packages/PulseBridge.Condo
-includes=$condopkg/build/sake
+includes=$condopkg/build
+condo=$condopkg/PulseBridge.Condo.nupkg
 
 make=make.shade
 
-if test -f "$sakepkg"; then
-    rm -rRf "$sakepkg"
+# determine if the feed was set from an environment variable
+if [ -z "$feedsrc" ]; then
+    # set the feed
+    feedsrc=https://api.nuget.org/v3/index.json
 fi
 
-if test -f "$condopkg"; then
-    rm -rRf "$condopkg"
+# determine if sake exists
+if ! test -f "$sake"; then
+    # install sake using nuget (so we have additional options not supported by DNU)
+    mono "$nuget" install Sake -pre -o packages -ExcludeVersion -NonInteractive
 fi
 
-# install sake using nuget (so we have additional options not supported by DNU)
-mono "$nuget" install Sake -pre -o packages -ExcludeVersion -NonInteractive
+if ! test -f "$condo"; then
+    # install the condo build system
+    mono "$nuget" install PulseBridge.Condo -pre -o packages -ExcludeVersion -NonInteractive -Source "$feedsrc"
+fi
 
-# install the condo build system
-mono "$nuget" install PulseBridge.Condo -pre -o packages -ExcludeVersion -NonInteractive
+# write a newline for separation
+echo
 
 # execute the build with sake
 mono "$sake" -I "$includes" -f "$make" "$@"
+
+# change to the original path
+cd $path

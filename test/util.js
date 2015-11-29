@@ -3,6 +3,7 @@
 var util = (function () {
 	var yo = require('yeoman-generator');
 	var path = require('path');
+	var fs = require('fs');
 
 	var test;
 	var assert;
@@ -63,6 +64,19 @@ var util = (function () {
 			assert.fileContent(path, content);
 		});
 	}
+	
+	function hasMode(path, mode) {
+		it('created:' + path + ':hasMode:' + mode, function(done) {
+			fs.stat(path, function(err, stats) {
+				if (err) {
+					done(err);
+				} else {
+					assert.equal(mode, stats.mode, stats.mode);
+					done();
+				}
+			});
+		});
+	}
 
 	function notCreated(path) {
 		it('not-created:' + path, function() {
@@ -74,8 +88,9 @@ var util = (function () {
 		app: app,
 		created: created,
 		notCreated: notCreated,
-		contains: contains
-	}
+		contains: contains,
+		hasMode: hasMode
+	};
 
 	return methods;
 })();

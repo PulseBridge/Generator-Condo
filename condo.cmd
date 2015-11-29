@@ -1,6 +1,8 @@
 @echo off
 cd %~dp0
 
+ECHO.
+
 SETLOCAL
     SET DNXPATH=%USERPROFILE%\.dnx
     SET DNVMPATH=%DNXPATH%\dnvm
@@ -24,11 +26,9 @@ SETLOCAL
         CALL "%DNVMCMD%" update-self
     )
 
-    CALL "%DNVMCMD%" upgrade -r coreclr -nonative
-
     SET NUGETPATH=%AGENT_BUILDDIRECTORY%\NuGet
 
-    IF "%AGENT_BUILDDIRECTORY%" == "" (
+    IF [%AGENT_BUILDDIRECTORY%] == [] (
         SET NUGETPATH=%LOCALAPPDATA%\NuGet
     )
 
@@ -54,23 +54,30 @@ SETLOCAL
         copy "%NUGETCMD%" "%NUGET%"
     )
 
+    CALL "%DNVMCMD%" install latest -r coreclr -a x86 -nonative -alias default
+    CALL "%DNVMCMD%" install latest -r clr -a x86 -nonative -alias default
+
+    SET FEEDSRC=%CONDO_NUGET_SRC%
     SET SAKEPKG=packages\Sake
     SET SAKE=%SAKEPKG%\tools\Sake.exe
     SET CONDOPKG=packages\PulseBridge.Condo
-    SET INCLUDES=%CONDOPKG%\build\sake
+    SET CONDO=%CONDOPKG%\PulseBridge.Condo.nuspec
+    SET INCLUDES=%CONDOPKG%\build
     SET MAKE=make.shade
 
-    IF EXIST "%SAKEPKG%" (
-	rd "%SAKEPKG%" /s /q
+    IF [%FEEDSRC%] == [] (
+        SET FEEDSRC=https://api.nuget.org/v3/index.json
+    )
+
+    IF EXIST "%SAKE%" (
+        "%NUGET%" install Sake -pre -o packages -ExcludeVersion -NonInteractive
     )
 
     IF EXIST "%CONDOPKG%" (
-        rd "%CONDOPKG%" /s /q
+        "%NUGET%" install PulseBridge.Condo -pre -o packages -ExcludeVersion -NonInteractive -Source "%FEEDSRC%"
     )
 
-    "%NUGET%" install Sake -pre -o packages -ExcludeVersion
-
-    "%NUGET%" install PulseBridge.Condo -pre -o packages -ExcludeVersion -NonInteractive
+    ECHO.
 
     "%SAKE%" -I "%INCLUDES%" -f "%MAKE%" %*
 ENDLOCAL
