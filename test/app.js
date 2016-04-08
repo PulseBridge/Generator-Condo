@@ -16,8 +16,9 @@ describe('condo:app', function () {
   test.created('condo.cmd');
   test.created('condo.ps1');
   test.created('condo.sh');
+  test.created('condo.msbuild');
   test.hasMode('condo.sh', 33256);
-  
+
   test.created('src/.yo-rc.json');
   test.created('test/.yo-rc.json');
 
@@ -26,13 +27,13 @@ describe('condo:app', function () {
   test.contains('global.json', 'test');
   test.contains('global.json', '"coreclr"');
 
-  test.created('make.shade');
-  test.contains('make.shade', ' = \'test-app\'');
-  test.contains('make.shade', ' = \'1.2.3\'');
-  test.contains('make.shade', ' = \'My Company\'');
-  test.contains('make.shade', '©. My Company.');
-  test.contains('make.shade', ' = \'src\'');
-  test.contains('make.shade', ' = \'test\'');
+  test.created('condo.shade');
+  test.contains('condo.shade', ' = \'test-app\'');
+  test.contains('condo.shade', ' = \'1.2.3\'');
+  test.contains('condo.shade', ' = \'My Company\'');
+  test.contains('condo.shade', '©. My Company.');
+  test.contains('condo.shade', ' = \'src\'');
+  test.contains('condo.shade', ' = \'test\'');
 
   test.created('test-app.sln');
   test.created('test-app.sln.DotSettings');
@@ -47,7 +48,7 @@ describe('condo:app', function () {
   test.created('.jshintrc');
 });
 
-describe('condo:app:no-includes', function () {  
+describe('condo:app:no-includes', function () {
   var prompts = {
     "src": "bob-src",
     "test": "bob-test",
@@ -57,19 +58,19 @@ describe('condo:app:no-includes', function () {
     "runtime": "mono",
     "includes": [ ]
   };
-  
+
   test.app(null, null, prompts);
 
   it('importable', function () {
     var app = require('../app');
     assert.notEqual(app, undefined);
   });
-  
+
   test.created('condo.cmd');
   test.created('condo.ps1');
   test.created('condo.sh');
   test.hasMode('condo.sh', 33256);
-  
+
   test.created('bob-src/.yo-rc.json');
   test.created('bob-test/.yo-rc.json');
 
@@ -78,14 +79,15 @@ describe('condo:app:no-includes', function () {
   test.contains('global.json', 'bob-test');
   test.contains('global.json', '"mono"');
 
-  test.created('make.shade');
-  test.contains('make.shade', ' = \'test-app2\'');
-  test.contains('make.shade', ' = \'3.2.1\'');
-  test.contains('make.shade', ' = \'Sweet\'');
-  test.contains('make.shade', '©. Sweet.');
-  test.contains('make.shade', ' = \'bob-src\'');
-  test.contains('make.shade', ' = \'bob-test\'');
+  test.created('condo.shade');
+  test.contains('condo.shade', ' = \'test-app2\'');
+  test.contains('condo.shade', ' = \'3.2.1\'');
+  test.contains('condo.shade', ' = \'Sweet\'');
+  test.contains('condo.shade', '©. Sweet.');
+  test.contains('condo.shade', ' = \'bob-src\'');
+  test.contains('condo.shade', ' = \'bob-test\'');
 
+  test.notCreated('condo.msbuild');
   test.notCreated('test-app.sln');
   test.notCreated('test-app.sln.DotSettings');
 
