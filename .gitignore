@@ -51,9 +51,6 @@ _TeamCity*
 # include solution based resharper settings
 !*.[Dd]ot[Ss]ettings
 
-# stylecop
-[Ss]tyle[Cc]op.*
-
 # mstest results
 [Tt]est[Rr]esult*/
 [Bb]uild[Ll]og.*

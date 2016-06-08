@@ -50,9 +50,6 @@ _TeamCity*
 # include solution based resharper settings
 !*.[Dd]ot[Ss]ettings
 
-# stylecop
-![Ss]tyle[Cc]op.sjon
-
 # mstest results
 [Tt]est[Rr]esult*/
 [Bb]uild[Ll]og.*
@@ -140,6 +137,5 @@ publish/
 *.pubxml.user
 
 # condo files
-condo-*
 condo-*
 [Cc]ondo.[Aa]ssembly[Ii]nfo.cs
