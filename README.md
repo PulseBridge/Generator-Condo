@@ -160,7 +160,7 @@ For questions or comments related to _condo_ itself, please open an issue on the
 [npm-d-image]: https://img.shields.io/npm/dm/generator-condo.svg
 
 [travis-image]: https://img.shields.io/travis/pulsebridge/generator-condo/develop.svg
-[travis-url]: //travis-ci.org/pulsebridge/condo
+[travis-url]: //travis-ci.org/pulsebridge/generator-condo
 
 [condo-url]: http://open.pulsebridge.com/condo
 [license-url]: http://www.apache.org/licenses/LICENSE-2.0
