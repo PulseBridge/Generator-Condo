@@ -28,6 +28,10 @@ var util = (function() {
                 "runtime": "coreclr",
                 "includes": [
                     "msbuild",
+                    "analysis",
+                    "globalinfo",
+                    "nuget",
+                    "stylecop",
                     "solution",
                     "resharper",
                     "editorconfig",

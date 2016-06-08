@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<Dictionary>
+  <Words>
+    <Deprecated>
+      <Term PreferredAlternate="signin">login</Term>
+      <Term PreferredAlternate="signout">logout</Term>
+    </Deprecated>
+    <Recognized>
+      <Word>api</Word>
+      <Word>realtime</Word>
+      <Word>webhook</Word>
+      <Word>username</Word>
+      <Word>mergeable</Word>
+      <Word>finalizers</Word>
+      <Word>autofac</Word>
+      <Word>json</Word>
+      <Word>admin</Word>
+      <Word>config</Word>
+      <Word>userinfo</Word>
+      <Word>openid</Word>
+      <Word>timestamp</Word>
+      <Word>etag</Word>
+      <Word>async</Word>
+      <Word>enum</Word>
+      <Word>Enums</Word>
+      <Word>struct</Word>
+      <Word>Structs</Word>
+      <Word>namespace</Word>
+      <Word>Namespace</Word>
+      <Word>rowversion</Word>
+      <Word>middleware</Word>
+      <Word>versioned</Word>
+      <Word>versioning</Word>
+      <Word>args</Word>
+      <Word>metadata</Word>
+      <Word>queryable</Word>
+      <Word>guid</Word>
+      <Word>int</Word>
+      <Word>timeline</Word>
+      <Word>hangfire</Word>
+      <Word>Pbm</Word>
+      <Word>Pcn</Word>
+    </Recognized>
+  </Words>
+  <Acronyms>
+    <CasingExceptions>
+      <Acronym>NPI</Acronym>
+      <Acronym>API</Acronym>
+      <Acronym>NDC</Acronym>
+      <Acronym>OOP</Acronym>
+      <Acronym>PBM</Acronym>
+      <Acronym>PCN</Acronym>
+    </CasingExceptions>
+  </Acronyms>
+</Dictionary>

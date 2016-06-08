@@ -20,7 +20,9 @@ describe('condo:app', function () {
   test.hasMode('condo.sh', 33256);
 
   test.created('src/.yo-rc.json');
+  test.created('src/CodeAnalysis.ruleset');
   test.created('test/.yo-rc.json');
+  test.created('test/CodeAnalysis.ruleset');
 
   test.created('global.json');
   test.contains('global.json', 'src');
@@ -36,6 +38,19 @@ describe('condo:app', function () {
   test.contains('condo.shade', ' = \'test\'');
 
   test.created('test-app.sln');
+  test.contains('test-app.sln', 'editorconfig');
+  test.contains('test-app.sln', 'stylecop.json');
+  test.contains('test-app.sln', 'gitignore');
+  test.contains('test-app.sln', 'gitattributes');
+  test.contains('test-app.sln', 'jshintrc');
+  test.contains('test-app.sln', 'stylecop.json');
+  test.contains('test-app.sln', 'CodeAnalysis.xml');
+  test.contains('test-app.sln', 'GlobalAssemblyInfo.cs');
+  test.contains('test-app.sln', 'NuGet.config');
+  test.contains('test-app.sln', 'src\\CodeAnalysis.ruleset');
+  test.contains('test-app.sln', 'test\\CodeAnalysis.ruleset');
+  test.contains('test-app.sln', 'Analysis|Any CPU');
+
   test.created('test-app.sln.DotSettings');
   test.contains('test-app.sln.DotSettings', 'My Company');
 
@@ -44,6 +59,14 @@ describe('condo:app', function () {
 
   test.created('.gitattributes');
   test.created('.gitignore');
+
+  test.created('tools/settings/stylecop.json');
+  test.contains('tools/settings/stylecop.json', 'My Company');
+
+  test.created('tools/settings/CodeAnalysis.xml');
+
+  test.created('tools/settings/GlobalAssemblyInfo.cs');
+  test.contains('tools/settings/GlobalAssemblyInfo.cs', 'My Company');
 
   test.created('.jshintrc');
 });

@@ -8,7 +8,7 @@ var licenseUri          = 'http://www.apache.org/licenses/LICENSE-2.0'
 var src_path            = '<%= src %>'
 var test_path           = '<%= test %>'
 
-var configuration = 'Debug'
+var configuration       = 'Debug'
 
 use-condo-lifecycle
 use-condo-goals

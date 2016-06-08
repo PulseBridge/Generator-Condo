@@ -88,12 +88,16 @@ module.exports = yeoman.generators.Base.extend({
                     value: 'solution',
                     checked: checked
                 }, {
-                    name: 'ReSharper Settings',
-                    value: 'resharper',
+                    name: 'StyleCop (stylecop.json)',
+                    value: 'stylecop',
                     checked: checked
                 }, {
-                    name: 'Editor configuration (.editorconfig)',
-                    value: 'editorconfig',
+                    name: 'Code Analysis (Dictionary and Rules)',
+                    value: 'analysis',
+                    checked: checked
+                }, {
+                    name: 'ReSharper Settings',
+                    value: 'resharper',
                     checked: checked
                 }, {
                     name: 'Visual Studio Code settings (settings.json)',
@@ -106,6 +110,10 @@ module.exports = yeoman.generators.Base.extend({
                 }, {
                     name: 'Git attributes (.gitattributes)',
                     value: 'gitattributes',
+                    checked: checked
+                }, {
+                    name: 'Editor configuration (.editorconfig)',
+                    value: 'editorconfig',
                     checked: checked
                 }, {
                     name: 'JSHint (.jshintsrc)',
@@ -229,8 +237,6 @@ module.exports = yeoman.generators.Base.extend({
                 var sln = 'solution.sln';
 
                 if (this.props.includes.indexOf('resharper') > -1) {
-                    sln = 'resharper.sln';
-
                     this.fs.copyTpl(
                         this.templatePath('solution.sln.DotSettings'),
                         this.destinationPath(this.props.project + '.sln.DotSettings'),
@@ -245,10 +251,50 @@ module.exports = yeoman.generators.Base.extend({
                 );
             }
 
+            if (this.props.includes.indexOf('msbuild') > -1) {
+                this.fs.copyTpl(
+                    this.templatePath('globalinfo.cs'),
+                    this.destinationPath('tools/settings/GlobalAssemblyInfo.cs'),
+                    this.props
+                );
+            }
+
             if (this.props.includes.indexOf('editorconfig') > -1) {
                 this.fs.copy(
                     this.templatePath('editorconfig'),
                     this.destinationPath('.editorconfig')
+                );
+            }
+
+            if (this.props.includes.indexOf('nuget') > -1) {
+                this.fs.copy(
+                    this.templatePath('nuget.config'),
+                    this.destinationPath('NuGet.config')
+                );
+            }
+
+            if (this.props.includes.indexOf('analysis') > -1) {
+                this.fs.copy(
+                    this.templatePath('src.ruleset'),
+                    this.destinationPath('src/CodeAnalysis.ruleset')
+                );
+
+                this.fs.copy(
+                    this.templatePath('test.ruleset'),
+                    this.destinationPath('test/CodeAnalysis.ruleset')
+                );
+
+                this.fs.copy(
+                    this.templatePath('analysis.xml'),
+                    this.destinationPath('tools/settings/CodeAnalysis.xml')
+                );
+            }
+
+            if (this.props.includes.indexOf('stylecop') > -1) {
+                this.fs.copyTpl(
+                    this.templatePath('stylecop.json'),
+                    this.destinationPath('tools/settings/stylecop.json'),
+                    this.props
                 );
             }
 
