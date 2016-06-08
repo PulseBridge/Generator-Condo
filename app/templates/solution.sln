@@ -1,7 +1,6 @@
-﻿
-Microsoft Visual Studio Solution File, Format Version 12.00
+﻿Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 14
-VisualStudioVersion = 14.0.23107.0
+VisualStudioVersion = 14.0.25123.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{4CB039A4-FDC7-4456-9C18-F598B91D8BCB}"
 <% if (includes.indexOf('analysis') > -1) { -%>
@@ -50,10 +49,10 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "settings", "settings", "{6A
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "build", "build", "{CE7A28CE-AAF1-46EB-90A6-2DE2B8D02D93}"
 	ProjectSection(SolutionItems) = preProject
-		build.cmd = build.cmd
-		build.ps1 = build.ps1
-		build.sh = build.sh
-		make.shade = make.shade
+		condo.cmd = condo.cmd
+		condo.ps1 = condo.ps1
+		condo.sh = condo.sh
+		condo.shade = condo.shade
 	EndProjectSection
 EndProject
 Global
@@ -65,18 +64,11 @@ Global
 		Release|Any CPU = Release|Any CPU
 		Documentation|Any CPU = Documentation|Any CPU
 	EndGlobalSection
-	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{90409C81-FE05-49BB-ACE1-9AAEC0B10C72}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{90409C81-FE05-49BB-ACE1-9AAEC0B10C72}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{90409C81-FE05-49BB-ACE1-9AAEC0B10C72}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{90409C81-FE05-49BB-ACE1-9AAEC0B10C72}.Release|Any CPU.Build.0 = Release|Any CPU
-	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{6A695E34-F3C3-41FD-A9A3-A936E0A9CF82} = {669D4E38-82F3-48B2-A6C1-2AF2B8C5E136}
 		{CE7A28CE-AAF1-46EB-90A6-2DE2B8D02D93} = {669D4E38-82F3-48B2-A6C1-2AF2B8C5E136}
-		{90409C81-FE05-49BB-ACE1-9AAEC0B10C72} = {4CB039A4-FDC7-4456-9C18-F598B91D8BCB}
 	EndGlobalSection
 EndGlobal
