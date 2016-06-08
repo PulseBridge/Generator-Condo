@@ -4,28 +4,48 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 VisualStudioVersion = 14.0.23107.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{4CB039A4-FDC7-4456-9C18-F598B91D8BCB}"
-<% if (includes.indexOf('analysis') > -1) { %>	ProjectSection(SolutionItems) = preProject
+<% if (includes.indexOf('analysis') > -1) { -%>
+	ProjectSection(SolutionItems) = preProject
 		src\CodeAnalysis.ruleset = src\CodeAnalysis.ruleset
-	EndProjectSection<% } %>
+	EndProjectSection
+<% } -%>
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "test", "test", "{32BDBACE-1E3C-4F8C-9401-991AF9F7FA02}"
-<% if (includes.indexOf('analysis') > -1) { %>	ProjectSection(SolutionItems) = preProject
+<% if (includes.indexOf('analysis') > -1) { -%>
+	ProjectSection(SolutionItems) = preProject
 		test\CodeAnalysis.ruleset = test\CodeAnalysis.ruleset
-	EndProjectSection<% } %>
+	EndProjectSection
+<% } -%>
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tools", "tools", "{669D4E38-82F3-48B2-A6C1-2AF2B8C5E136}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "settings", "settings", "{6A695E34-F3C3-41FD-A9A3-A936E0A9CF82}"
 	ProjectSection(SolutionItems) = preProject
 		global.json = global.json
-<% if (includes.indexOf('editorconfig') > -1) { %>		.editorconfig = .editorconfig<% } %>
-<% if (includes.indexOf('gitignore') > -1) { %>		.gitignore = .gitignore<% } %>
-<% if (includes.indexOf('gitattributes') > -1) { %>		.gitattributes = .gitattributes<% } %>
-<% if (includes.indexOf('jshint') > -1) { %>		.jshintrc = .jshintrc<% } %>
-<% if (includes.indexOf('stylecop') > -1) { %>		tools\settings\stylecop.json = tools\settings\stylecop.json<% } %>
-<% if (includes.indexOf('analysis') > -1) { %>		tools\settings\CodeAnalysis.xml = tools\settings\CodeAnalysis.xml<% } %>
-<% if (includes.indexOf('globalinfo') > -1) { %>		tools\settings\GlobalAssemblyInfo.cs = tools\settings\GlobalAssemblyInfo.cs<% } %>
-<% if (includes.indexOf('nuget') > 1) { %>		NuGet.config = NuGet.config<% } %>
+<% if (includes.indexOf('editorconfig') > -1) { -%>
+		.editorconfig = .editorconfig
+<% } -%>
+<% if (includes.indexOf('gitignore') > -1) { -%>
+		.gitignore = .gitignore
+<% } -%>
+<% if (includes.indexOf('gitattributes') > -1) { -%>
+		.gitattributes = .gitattributes
+<% } -%>
+<% if (includes.indexOf('jshint') > -1) { -%>
+		.jshintrc = .jshintrc
+<% } -%>
+<% if (includes.indexOf('stylecop') > -1) { -%>
+		tools\settings\stylecop.json = tools\settings\stylecop.json
+<% } -%>
+<% if (includes.indexOf('analysis') > -1) { -%>
+		tools\settings\CodeAnalysis.xml = tools\settings\CodeAnalysis.xml
+<% } -%>
+<% if (includes.indexOf('globalinfo') > -1) { -%>
+		tools\settings\GlobalAssemblyInfo.cs = tools\settings\GlobalAssemblyInfo.cs
+<% } -%>
+<% if (includes.indexOf('nuget') > 1) { -%>
+		NuGet.config = NuGet.config
+<% } -%>
 	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "build", "build", "{CE7A28CE-AAF1-46EB-90A6-2DE2B8D02D93}"
@@ -38,7 +58,9 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "build", "build", "{CE7A28CE
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
-<% if (includes.indexOf('analysis') > -1) { %>		Analysis|Any CPU = Analysis|Any CPU<% } %>
+<% if (includes.indexOf('analysis') > -1) { -%>
+		Analysis|Any CPU = Analysis|Any CPU
+<% } -%>
 		Debug|Any CPU = Debug|Any CPU
 		Release|Any CPU = Release|Any CPU
 		Documentation|Any CPU = Documentation|Any CPU

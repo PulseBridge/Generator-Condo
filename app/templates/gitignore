@@ -21,7 +21,6 @@ x86/
 [Pp]ackages/
 [Nn]ode_[Mm]odules/
 [Bb]ower_[Cc]omponents/
-npm-debug.log
 .npmignore
 .ntvs_analysis.dat
 
@@ -29,9 +28,9 @@ npm-debug.log
 .vs/**
 .vscode/**
 [Pp]roject.lock.json
-[Cc]ondo.[Aa]ssembly[Ii]nfo.cs
 *.[Cc]ache
 !*.[Cc]ache/
+Microsoft.CodeDom.*
 
 # ria/silverlight projects
 Generated_Code/
@@ -52,7 +51,7 @@ _TeamCity*
 !*.[Dd]ot[Ss]ettings
 
 # stylecop
-[Ss]tyle[Cc]op.*
+![Ss]tyle[Cc]op.sjon
 
 # mstest results
 [Tt]est[Rr]esult*/
@@ -115,13 +114,11 @@ UpgradeLog*.htm
 # others
 ~$*
 *~
+*.log
 
 # database projects
 *.dbmdl
 *.dbproj.schemaview
-
-# security tokens
-*.pfx
 
 # doc project
 DocProject/buildhelp/
@@ -138,8 +135,11 @@ DocProject/Help/html
 
 # publish output
 publish/
-*.[Pp]ublish.xml
 *.azurePubxml
-*.pubxml
 *.publishproj
-*.publishsettings
+*.pubxml.user
+
+# condo files
+condo-*
+condo-*
+[Cc]ondo.[Aa]ssembly[Ii]nfo.cs
