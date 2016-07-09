@@ -18,14 +18,14 @@ Chat          | [![Join Chat][gitter-image]][gitter-url]
 
 ### What is Condo?
 
-Condo is a cross-platform command line interface (CLI) build system for projects using the .NET Core Framework. It is capable of automatically detecting and executing all of the steps
-necessary to make a DNX project function correctly, including, but not limited to:
+Condo is a cross-platform command line interface (CLI) build system for projects using NodeJS, CoreCLR, .NET Framework, or... well, anything.
+It is capable of automatically detecting and executing all of the steps necessary to make <any> project function correctly, including, but not limited to:
 
 * Automatic semantic versioning
 * Restoring package manager dependencies (NuGet, NPM, Bower)
 * Executing default task runner commands (Grunt, Gulp)
-* Compiling projects and test projects
-* Executing unit tests
+* Compiling projects and test projects (package.json and msbuild)
+* Executing unit tests (xunit, mocha, jasmine, karma, protractor)
 * Packing NuGet packages
 * Pushing (Publishing) NuGet packages
 
@@ -56,18 +56,18 @@ These are just some of the most-used features of the build system. For more info
 	OS X / Linux:
 
 	```bash
-	./build.sh
+	./condo.sh
 	```
 
 	Windows (CLI):
 
 	```cmd
-	build
+	condo
 	```
 
 	Windows (PoSH):
 	```posh
-	./build.ps1
+	./condo.ps1
 	```
 
 ### Options
@@ -136,6 +136,8 @@ yo condo --includes false
 	- This is based on the [gitignore project][gitignore-url].
 * **Git Attributes**: An attributes file (.gitattributes) used to configure cross-platform management of file types within a git repository.
 * **JSHint**: A hint file (.jshintrc) used to configure JSHint and auto-completion toolsets in various editors.
+* **Code Analysis Dictionaries**: A code analysis dictionary using reasonable defaults for both the src and test folders (.NET)
+* **StyleCop Settings**: A StyleCop configuration file used for the StyleCop Rosyln Analyzers (.NET).
 
 ### CLI Options
 
